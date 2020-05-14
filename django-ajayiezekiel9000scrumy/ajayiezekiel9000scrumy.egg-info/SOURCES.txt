@@ -1,0 +1,16 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+setup.py
+ajayiezekiel9000scrumy/__init__.py
+ajayiezekiel9000scrumy/admin.py
+ajayiezekiel9000scrumy/apps.py
+ajayiezekiel9000scrumy/models.py
+ajayiezekiel9000scrumy/tests.py
+ajayiezekiel9000scrumy/urls.py
+ajayiezekiel9000scrumy/views.py
+ajayiezekiel9000scrumy.egg-info/PKG-INFO
+ajayiezekiel9000scrumy.egg-info/SOURCES.txt
+ajayiezekiel9000scrumy.egg-info/dependency_links.txt
+ajayiezekiel9000scrumy.egg-info/top_level.txt
+ajayiezekiel9000scrumy/migrations/__init__.py
