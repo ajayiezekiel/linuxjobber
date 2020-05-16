@@ -1,4 +1,7 @@
 from django.http import HttpResponse
 
+from .models import ScrumyGoals
+
 def get_grading_parameters(request):
-    return HttpResponse("This is a Scrum Application")
+    goal = ScrumyGoals.objects.get(pk=1)
+    return HttpResponse(goal)
