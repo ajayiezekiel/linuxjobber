@@ -12,12 +12,12 @@ def get_grading_parameters(request):
 
 def move_goal(request, goal_id):
     
-    dic = ({ 'error' : "A record with that goal id does not exist"})
+    dic = ({'error' : "A record with that goal id does not exist"})
     dictionary = {'dict1' : dic}
     try:
         obj1 = ScrumyGoals.objects.get(pk = goal_id)
     except Exception as e:
-        return render (request, 'ajayiezekiel9000scrumy/exception.html', dictionary)
+        return render(request, 'ajayiezekiel9000scrumy/exception.html', dictionary)
     
     else:
         return HttpResponse(obj1.goal_name)
