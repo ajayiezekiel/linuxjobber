@@ -32,4 +32,8 @@ def add_goal(request):
 
 def home(request):
     goal = ScrumyGoals.objects.get(goal_name='Learn Django')
-    return render(request, 'ajayiezekiel9000scrumy/home.html', {'goal': goal})
+    return render(request, 'ajayiezekiel9000scrumy/home.html', 
+                {'first_name': goal.user.first_name,
+                 'goal_name': goal.goal_name,
+                 'goal_id': goal.goal_id
+                })
