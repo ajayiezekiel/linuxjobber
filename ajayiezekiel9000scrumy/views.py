@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.contrib.auth.models import User
 
 from .models import ScrumyGoals, ScrumyHistory, GoalStatus
@@ -30,6 +31,5 @@ def add_goal(request):
         sample_dict[number] = number
 
 def home(request):
-    goals = ScrumyGoals.objects.filter(goal_name='Keep Learning Django')
-    output = ', '.join([eachgoal.goal_name for eachgoal in goals])
-    return HttpResponse(output)
+    goal = ScrumyGoals.objects.get(goal_name='Learn Django')
+    return render(request, 'ajayiezekiel9000scrumy/home.html', {'goal': goal})
