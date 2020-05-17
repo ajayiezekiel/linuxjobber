@@ -10,9 +10,21 @@ def get_grading_parameters(request):
     goal = ScrumyGoals.objects.filter(goal_name='Learn Django')
     return HttpResponse(goal)
 
+def move_goal(request, goal_id):
+    
+    dic = ({ 'error' : "A record with that goal id does not exist"})
+    dictionary = {'dict1' : dic}
+    try:
+        obj1 = ScrumyGoals.objects.get(pk = goal_id)
+    except Exception as e:
+        return render (request, 'ajayiezekiel9000scrumy/exception.html', dictionary)
+    
+    else:
+        return HttpResponse(obj1.goal_name)
+
 # def move_goal(request, goal_id):
 #     try:
-#         obj = ScrumyGoals.objects.get(pk=goal_id)
+#         obj = ScrumyGoals.objects.get(goal_id=goal_id)
 #     except Exception as e:
 #         return render(request, 'ajayiezekiel9000scrumy/exception.html', 
 #                       {'error': 'A record with that goal id does not exist'}
@@ -45,14 +57,3 @@ def home(request):
                 })
 
 
-def move_goal(request, goal_id):
-    
-    dic = ({ 'error' : "A record with that goal id does not exist"})
-    dictionary = {'dict1' : dic}
-    try:
-        obj1 = ScrumyGoals.objects.get(pk = goal_id)
-    except Exception as e:
-        return render (request, 'ajayiezekiel9000scrumy/exception.html', dictionary)
-    
-    else:
-        return HttpResponse(obj1.goal_name)
