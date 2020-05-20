@@ -2,35 +2,23 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 
-from .models import ScrumyGoals, ScrumyHistory, GoalStatus
+from .models import GoalStatus, ScrumyGoals, ScrumyHistory
 
 import random
 
 def get_grading_parameters(request):
-    goal = ScrumyGoals.objects.filter(goal_name='Learn Django')
+    goal = ScrumyGoals.objects.pk(pk=1)
     return HttpResponse(goal)
 
 def move_goal(request, goal_id):
-    
-    dic = ({'error' : "A record with that goal id does not exist"})
-    dictionary = {'dict1' : dic}
+    dic = "A record with that goal id does not exist"
     try:
         obj1 = ScrumyGoals.objects.get(pk = goal_id)
     except Exception as e:
-        return render(request, 'ajayiezekiel9000scrumy/exception.html', dictionary)
+        return render(request, 'ajayiezekiel9000scrumy/exception.html', {'error': dic})
     
     else:
         return HttpResponse(obj1.goal_name)
-
-# def move_goal(request, goal_id):
-#     try:
-#         obj = ScrumyGoals.objects.get(goal_id=goal_id)
-#     except Exception as e:
-#         return render(request, 'ajayiezekiel9000scrumy/exception.html', 
-#                       {'error': 'A record with that goal id does not exist'}
-#                       )
-#     else:
-#         return HttpResponse(obj.goal_name)
 
 def add_goal(request):
     weekly = GoalStatus.objects.get(status_name='Weekly Goal')
@@ -47,6 +35,8 @@ def add_goal(request):
                                     user=the_user
                                 )
         sample_dict[number] = number
+        goal = ScrumyGoals.objects.get(pk=number)
+        return HttpResponse(goal)
 
 def home(request):
     goal = ScrumyGoals.objects.get(goal_name='Learn Django')
