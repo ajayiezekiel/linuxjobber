@@ -7,7 +7,7 @@ from .models import GoalStatus, ScrumyGoals, ScrumyHistory
 import random
 
 def get_grading_parameters(request):
-    goal = ScrumyGoals.objects.pk(pk=1)
+    goal = ScrumyGoals.objects.get(pk=1)
     return HttpResponse(goal)
 
 def move_goal(request, goal_id):
