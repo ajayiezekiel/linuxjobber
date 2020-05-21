@@ -1,16 +1,37 @@
-<table>
+<table border="2" bgcolor="#efefef">
     <tr>
-        <td>User</td>
-        <td>Weekly Goals</td>
-        <td>Daily Goals</td>
-        <td>Verify Goals</td>
-        <td>Done Goals</td>
+        <th width="150">User</th>
+        <th width="150">Weekly Goals</th>
+        <th width="150">Daily Goals</th>
+        <th width="150">Verify Goals</th>
+        <th width="150">Done Goals</th>
     </tr>
+    {% for goal in goals %}
     <tr>
-        <td>{{first_name}}</td>
-        <td>{{goal_name}},  {{goal_id}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{goal.user.username}}</td>
+        {% if goal.goal_status.status_name == "Weekly Goal" %}
+            <td>{{goal.goal_id}}  {{goal.goal_name}}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+
+        {% if goal.goal_status.status_name == "Daily Goal" %}
+            <td>{{goal.goal_id}}  {{goal.goal_name}}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+
+        {% if goal.goal_status.status_name == "Verify Goal" %}
+            <td>{{goal.goal_id}}  {{goal.goal_name}}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+
+        {% if goal.goal_status.status_name == "Done Goal" %}
+            <td>{{goal.goal_id}}  {{goal.goal_name}}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
     </tr>
+    {% endfor %}
 </table>
